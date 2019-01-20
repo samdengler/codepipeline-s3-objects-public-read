@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  S3BucketParameter:
+    Type: String
+
+Resources:
+  S3BatchAclFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs8.10
+      Handler: index.handler
+      CodeUri: app
+      Timeout: 900
+      Environment:
+        Variables:
+          S3_BUCKET: !Ref S3BucketParameter
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - s3:PutObjectACL
+              Resource: !Sub 'arn:aws:s3:::${S3BucketParameter}/*'
+            - Effect: Allow
+              Action:
+                - codepipeline:PutJobFailureResult
+                - codepipeline:PutJobSuccessResult
+              Resource: '*'
