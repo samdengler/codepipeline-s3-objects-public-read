@@ -16,6 +16,12 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 │   └── package-lock.json    <-- Node dependencies lock
 └── template.yaml            <-- SAM template
 ```
+## Instructions
+
+[Installing the Lambda Function from the Serverless Application Repository](#Installing the Lambda Function from the Serverless Application Repository)
+[Configuring CodePipeline to use the Lambda Function](#Configuring CodePipeline to use the Lambda Function)
+
+---
 
 ## Installing the Lambda Function from the Serverless Application Repository
 
