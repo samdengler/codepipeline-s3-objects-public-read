@@ -1,4 +1,4 @@
-# lambda-codepipeline-s3-object-public-read
+# lambda-codepipeline-s3-objects-public-read
 
 [AWS CodePipeline](https://aws.amazon.com/codepipeline/) is a fully managed continuous delivery (CD) service that lets you automate your software release process for fast and reliable updates. You can now use CodePipeline to deploy files, such as static website content or artifacts from your build process, to Amazon S3.
 
@@ -8,40 +8,65 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 
 ```bash
 .
-├── README.md           <-- This instructions file
-├── app                 <-- Source code for a lambda function
-│   ├── index.js        <-- Lambda function code
-│   └── package.json    <-- Node dependencies
-└── template.yaml       <-- SAM template
+├── LICENSE.txt              <-- License file
+├── README.md                <-- This instructions file
+├── app                      <-- Source code for a lambda function
+│   ├── index.js             <-- Lambda function code
+│   ├── package.json         <-- Node dependencies
+│   └── package-lock.json    <-- Node dependencies lock
+└── template.yaml            <-- SAM template
 ```
+
+## Installing the Lambda Function from the Serverless Application Repository
+
+1. Click the **Create Function** button in the Lambda Console.
+
+2. Enter `lambda-codepipeline-s3-objects-public-read` in the search box and select the **lambda-codepipeline-s3-objects-public-read** application.
+
+    ![](images/01.png)
+
+3. Enter an Application name (or keep the default) and the S3 Bucket name used to target the deployment in CodePipeline.  Scroll to the bottom and click **Deploy**.
+
+    ![](images/02.png)
+
+4. After the deployment is complete, click **Applications** in the left navigation and select the Application name used when creating the Application.
+
+    ![](images/03.png)
+
+5. Make note of the **Physical ID** for the **S3BatchAclFunction**.  You will use this when configuring the [CodePipeline pipeline](#Configuring CodePipeline to use the Lambda Function).
+
+    ![](images/04.png)
+
 
 ## Configuring CodePipeline to use the Lambda Function
 
 1. Click the **Edit** button next to the pipeline name:
 
-    ![](images/1.png)
+    ![](images/11.png)
 
 2. Scroll down to the Deploy stage and click the **Edit** button.
 
-    ![](images/2.png)
+    ![](images/12.png)
 
 3. Click the **Add action group** button.
 
-    ![](images/3.png)
+    ![](images/13.png)
 
 4. Type an **Action name** and select **AWS Lambda** from the **Action provider** list.
 
-    ![](images/4.png)
+    ![](images/14.png)
 
 5. In the AWS Lambda section, select the name of this Function that you've uploaded to your AWS account for **Function name**, select the same **Input artifact** used to deploy to S3, and click **Save**.
 
-    ![](images/5.png)
+    ![](images/15.png)
 
 6. Click the **Done** button in the Deploy stage.
 
-    ![](images/6.png)
+    ![](images/16.png)
 
 7. Scroll up to the top of the pipeline configuration and click the **Save** button.
 
-    ![](images/7.png)
+    ![](images/17.png)
+
+8. Done!  The next time that pipeline is executed, the BuildArtifact objects deployed to S3 will be updated with Public Read Access.
 
