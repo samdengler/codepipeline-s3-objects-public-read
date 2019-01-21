@@ -18,8 +18,8 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 ```
 ## Instructions
 
-[Installing the Lambda Function from the Serverless Application Repository](#Installing the Lambda Function from the Serverless Application Repository)
-[Configuring CodePipeline to use the Lambda Function](#Configuring CodePipeline to use the Lambda Function)
+[Installing the Lambda Function from the Serverless Application Repository](#installing-the-lambda-function-from-the-serverless-application-repository)      
+[Configuring CodePipeline to use the Lambda Function](#configuring-codepipeline-to-use-the-lambda-function)
 
 ---
 
@@ -39,7 +39,7 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 
     ![](images/03.png)
 
-5. Make note of the **Physical ID** for the **S3BatchAclFunction**.  You will use this when configuring the [CodePipeline pipeline](#Configuring CodePipeline to use the Lambda Function).
+5. Make note of the **Physical ID** for the **S3BatchAclFunction**.  You will use this when configuring the [CodePipeline pipeline](#configuring-codepipeline-to-use-the-lambda-function).
 
     ![](images/04.png)
 
