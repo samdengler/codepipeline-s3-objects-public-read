@@ -15,32 +15,6 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 └── template.yaml       <-- SAM template
 ```
 
-## Requirements
-
-* [AWS CLI](https://aws.amazon.com/cli/)
-* [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) (including Docker)
-
-## Installing Lambda Function into AWS Account using Local Workstation
-
-After the installation of the pre-requisites,
-
-1. Clone this repository to your workstation.
-
-2. Open a command line in the project directory.
-
-3. Build the Lambda Function
-
-    ```sam build```
-
-4. Package the Lambda Function, substitute **S3_ARTIFACT_BUCKET** with the S3 Bucket to which you have access to store SAM artifacts.
-
-    ```sam package --s3-bucket S3_ARTIFACT_BUCKET --output-template-file output-template.yaml```
-
-5. Deploy the Lambda Function, substitute **YOUR_STACK_NAME** with the CloudFormation Stack name and **S3_DEPLOY_BUCKET** with the S3 Bucket to which you will deploy using the CodePipeline S3 Deploy action.
-
-    ```sam deploy --template-file output-template.yaml --stack-name YOUR_STACK_NAME --parameter-overrides S3BucketParameter=S3_DEPLOY_BUCKET --capabilities CAPABILITY_IAM```
-
-
 ## Configuring CodePipeline to use the Lambda Function
 
 1. Click the **Edit** button next to the pipeline name:
