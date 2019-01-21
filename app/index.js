@@ -16,8 +16,11 @@ exports.handler = async (event, context) => {
     console.log("list objects");
     let objects = await listObjectsFromBuildArtifact(jobData);
     
-    console.log("update acl");
-    objects.map(o => putObjectAcl(S3_BUCKET, o, PUBLIC_READ_ACL));
+    console.log("update ACLs");
+    await Promise.all(
+      objects.map(o => putObjectAcl(S3_BUCKET, o, PUBLIC_READ_ACL))
+    );
+    console.log("update ACLs complete");
     
     console.log(`put successful result: ${jobId}`);
     await putJobSuccessfulResult(jobId);
@@ -32,21 +35,11 @@ exports.handler = async (event, context) => {
   return "complete";
 }
 
-async function putObjectAcl(bucket, key, acl) {
-  let params = {
-    Bucket: bucket,
-    Key: key,
-    ACL: acl
-  };
-  
-  return s3.putObjectAcl(params).promise();
-}
-
 async function listObjectsFromBuildArtifact(jobData) {
   let buildArtifact = jobData.inputArtifacts.filter(i => i.name === "BuildArtifact")[0];
   let artifactS3Client = new AWS.S3({
     accessKeyId: jobData.artifactCredentials.accessKeyId,
-    secretAccessKeyj: jobData.artifactCredentials.secretAccessKey,
+    secretAccessKey: jobData.artifactCredentials.secretAccessKey,
     sessionToken: jobData.artifactCredentials.sessionToken
   });
   
@@ -56,8 +49,18 @@ async function listObjectsFromBuildArtifact(jobData) {
   };
   
   return unzipper.Open.s3(artifactS3Client, params).then((zip) => {
-    return zip.files.map(f => f.path)
+    return zip.files.map(f => f.path);
   });
+}
+
+async function putObjectAcl(bucket, key, acl) {
+  let params = {
+    Bucket: bucket,
+    Key: key,
+    ACL: acl
+  };
+  
+  return s3.putObjectAcl(params).promise();
 }
 
 async function putJobSuccessfulResult(jobId) {

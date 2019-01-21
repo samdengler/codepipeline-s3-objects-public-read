@@ -30,9 +30,9 @@ Resources:
         Variables:
           S3_BUCKET: !Ref S3BucketParameter
       Policies:
-        - CodePipelineLambdaExecutionPolicy: {}
-        - S3CrudPolicy:
+        - S3FullAccessPolicy:
             BucketName: !Ref S3BucketParameter
+        - CodePipelineLambdaExecutionPolicy: {}
 
 Outputs:
   S3BatchAclFunctionName:
