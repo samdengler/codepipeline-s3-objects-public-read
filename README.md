@@ -1,4 +1,4 @@
-# lambda-codepipeline-s3-objects-public-read
+# codepipeline-s3-objects-public-read
 
 [AWS CodePipeline](https://aws.amazon.com/codepipeline/) is a fully managed continuous delivery (CD) service that lets you automate your software release process for fast and reliable updates. You can now use CodePipeline to deploy files, such as static website content or artifacts from your build process, to Amazon S3.
 
@@ -18,8 +18,8 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 ```
 ## Instructions
 
-[Installing the Lambda Function from the Serverless Application Repository](#installing-the-lambda-function-from-the-serverless-application-repository)      
-[Configuring CodePipeline to use the Lambda Function](#configuring-codepipeline-to-use-the-lambda-function)
+[Installing the Lambda Function from the Serverless Application Repository](#installing-the-function-from-the-serverless-application-repository)      
+[Configuring CodePipeline to use the Lambda Function](#configuring-codepipeline-to-use-the-function)
 
 ---
 
@@ -27,7 +27,7 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 
 1. Click the **Create Function** button in the Lambda Console.
 
-2. Enter `lambda-codepipeline-s3-objects-public-read` in the search box and select the **lambda-codepipeline-s3-objects-public-read** application.
+2. Enter `codepipeline-s3-objects-public-read` in the search box and select the **codepipeline-s3-objects-public-read** application.
 
     ![](images/01.png)
 
@@ -39,7 +39,7 @@ When invoked by CodePipeline following a successful deployment to S3, the Lambda
 
     ![](images/03.png)
 
-5. Make note of the **Physical ID** for the **S3BatchAclFunction**.  You will use this when configuring the [CodePipeline pipeline](#configuring-codepipeline-to-use-the-lambda-function).
+5. Make note of the **Physical ID** for the **S3BatchAclFunction**.  You will use this when configuring the [CodePipeline pipeline](#configuring-codepipeline-to-use-the-function).
 
     ![](images/04.png)
 
