@@ -4,6 +4,9 @@ Transform: AWS::Serverless-2016-10-31
 Parameters:
   S3BucketParameter:
     Type: String
+  BuildArtifactParameter:
+    Type: String
+    Default: BuildArtifact
     
 Metadata:
   AWS::ServerlessRepo::Application:
@@ -29,6 +32,8 @@ Resources:
       Environment:
         Variables:
           S3_BUCKET: !Ref S3BucketParameter
+          BUILD_ARTIFACT: !Ref BuildArtifactParameter
+
       Policies:
         - S3FullAccessPolicy:
             BucketName: !Ref S3BucketParameter
