@@ -18,7 +18,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['codepipeline','s3']
     HomePageUrl: https://github.com/samdengler/codepipeline-s3-objects-public-read
-    SemanticVersion: 0.0.2
+    SemanticVersion: 0.0.3
     SourceCodeUrl: https://github.com/samdengler/codepipeline-s3-objects-public-read
 
 Resources:
