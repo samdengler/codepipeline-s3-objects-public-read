@@ -1,5 +1,7 @@
 # codepipeline-s3-objects-public-read
 
+A CASE (copy and steal everything!!! ;-) ) study from [Sam Dengler's original] (https://github.com/samdengler/codepipeline-s3-objects-public-read) . Added the environment variable 'BUILD_ARTIFACT'.
+
 [AWS CodePipeline](https://aws.amazon.com/codepipeline/) is a fully managed continuous delivery (CD) service that lets you automate your software release process for fast and reliable updates. You can now use CodePipeline to deploy files, such as static website content or artifacts from your build process, to Amazon S3.
 
 The S3 deployment action makes it very easy to update S3 Buckets used to host static websites, however the objects deployed do not have Public Read Access.  In cases where the S3 Bucket policy does no allow Public Read Access, this prevents users from accessing the website content.
