@@ -5,14 +5,6 @@ const codepipeline = new AWS.CodePipeline();
 
 const process = require('process');
 const S3_BUCKET = process.env.S3_BUCKET;
-
-if(process.env.BUILD_ARTIFACT) { 
-    const BUILD_ARTIFACT = process.env.BUILD_ARTIFACT; 
-}
-else { 
-    const BUILD_ARTIFACT = "BuildArtifact"; 
-}
-
 const BUILD_ARTIFACT = process.env.BUILD_ARTIFACT
 const PUBLIC_READ_ACL = "public-read";
 
